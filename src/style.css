@@ -1,0 +1,122 @@
+@import url(https://fonts.googleapis.com/css?family=Bungee+Spice:regular);
+@import url(https://fonts.googleapis.com/css?family=Sen:regular,700,800);
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+    grid-template-rows: 1fr 2fr 6fr;
+    font-family: Sen;
+    background-color: #52525b;
+    height: 100vh;
+    width: 100vw;
+}
+
+input { 
+    font-family: inherit;
+    font-size: 17px;
+    border: 3px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    width: 250px;
+    outline: none;
+}
+
+button,
+div,
+p,
+h1,
+h2 {
+    font-size: 22px;
+    color: orange;
+    font-weight: bold;
+}
+
+h1,
+h2 {
+    font-size: 38px;
+}
+
+button {
+	background: none;
+	color: inherit;
+	border: none;
+    font-family: inherit;
+}
+
+button:hover {
+    color: blue;
+}
+
+.header {
+    grid-column: 1 / 3;
+    grid-row: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #27272a;
+    padding: 20px;
+    padding-inline: 50px;
+}
+
+.nav {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.projects {
+    grid-column: 1;
+    grid-row: 3;
+}
+
+.nav,
+.projects {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 25px;
+    padding: 10px;
+    background-color: #18181b;
+}
+
+.space {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    grid-column: 2;
+    grid-row: 2 / 4;
+    margin-top: 15px;
+    gap: 50px;
+}
+
+.btns {
+    display: flex;
+    gap: 50px;
+}
+
+.green {
+    background-color: greenyellow;
+}
+
+.red {
+    background-color: red;
+}
+
+.green,
+.red {
+    color: black;
+    width: 110px;
+}
+
+.invisible {
+    display: none;
+}
+
+
+
