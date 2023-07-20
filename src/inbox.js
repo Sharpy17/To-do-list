@@ -28,18 +28,34 @@ export default function openInbox() {
 
         hideDOM();
 
-        const input = document.createElement("input");
+        const cont1 = document.createElement("div");
+        const cont2 = document.createElement("div");
+        const input1 = document.createElement("input");
+        const input2 = document.createElement("input");
+        const label1 = document.createElement("label");
+        const label2 = document.createElement("label");
         const btns = document.createElement("div");
         const addbtn = document.createElement("button");
         const cancelbtn = document.createElement("button");
 
+        input1.setAttribute("id", `${iterator}`);
+        label1.setAttribute("for", `${iterator}`);
+        input2.setAttribute("id", `${iterator + 1}`);
+        label2.setAttribute("for", `${iterator + 1}`);
+
         btns.classList.add("btns");
         addbtn.classList.add("green");
         cancelbtn.classList.add("red");
+        cont1.classList.add("container");
+        cont2.classList.add("container");
 
-        space.append(input, btns);
+        space.append(cont1, cont2, btns);
+        cont1.append(label1, input1);
+        cont2.append(label2, input2);
         btns.append(addbtn, cancelbtn);
 
+        label1.textContent = "Title";
+        label2.textContent = "Description";
         addbtn.textContent = "Add";
         cancelbtn.textContent = "Cancel";
 
@@ -49,7 +65,8 @@ export default function openInbox() {
             const radioArr = Array.from(radiobtns);
             const containersArr = Array.from(containers);
 
-            input.remove();
+            cont1.remove();
+            cont2.remove();
             btns.remove();
 
             title.classList.remove("invisible");
@@ -76,23 +93,36 @@ export default function openInbox() {
         addbtn.addEventListener("click", (() => {
 
             const task = document.createElement("label");
+            const description = document.createElement("label");
             const radio = document.createElement("input");
+            const date = document.createElement("input");
             const container = document.createElement("div");
 
+            description.classList.add("small");
+            date.classList.add("date");
             container.classList.add("container");
             radio.classList.add("radio");
             task.classList.add("black");
 
             radio.setAttribute("type", "radio");
+            date.setAttribute("type", "date");
+            description.setAttribute("for", `${iterator}`);
             radio.setAttribute("id", `${iterator}`);
             radio.setAttribute("name", `${iterator}`);
             task.setAttribute("for", `${iterator}`);
             container.setAttribute("id", `${iterator}`);
+            date.setAttribute("id", `${iterator}`);
 
             space.append(container);
-            container.append(task, radio);
+            container.append(radio, task, description, date);
 
-            task.textContent = input.value;
+            task.textContent = input1.value;
+
+            if (input2.value === "") {
+                description.remove();
+            } else {
+                description.textContent = input2.value;
+            }
 
             returnDOM();
             iterator++;
@@ -100,7 +130,6 @@ export default function openInbox() {
 
         cancelbtn.onclick = returnDOM;
     }
-
 
     addTask.onclick = addForm;
 };
