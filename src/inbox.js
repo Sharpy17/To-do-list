@@ -1,18 +1,30 @@
 export default function openInbox() {
 
-    let iterator = 0;
+    let i = 0;
 
-    const body = document.querySelector("body");
-    const space = document.createElement("div");
-    const title = document.createElement("h1");
-    const addTask = document.createElement("button");
+    const doYouExist = document.querySelector(".inboxbtn");
+    console.log(doYouExist);
 
-    body.append(space);
-    space.classList.add("space");
-    space.append(title, addTask);
+    if (doYouExist !== null) {
+        const space = doYouExist;
+        space.style.display = flex;
+        const title = document.querySelector(".title");
+        const addTask = document.querySelector("add-task");
+    } else {
+        const body = document.querySelector("body");
+        const space = document.createElement("div");
+        const title = document.createElement("h1");
+        const addTask  = document.createElement("button");
 
-    title.textContent = "Inbox";
-    addTask.textContent = "Add Task +";
+        body.append(space);
+        addTask.classList.add("add-task");
+        space.classList.add("inboxbtn");
+        title.classList.add("title");
+        space.append(title, addTask);
+
+        title.textContent = "Anything";
+        addTask.textContent = "Add Task +";
+    };
 
     function hideDOM() {
         const containers = document.getElementsByClassName("container");
@@ -38,16 +50,18 @@ export default function openInbox() {
         const addbtn = document.createElement("button");
         const cancelbtn = document.createElement("button");
 
-        input1.setAttribute("id", `${iterator}`);
-        label1.setAttribute("for", `${iterator}`);
-        input2.setAttribute("id", `${iterator + 1}`);
-        label2.setAttribute("for", `${iterator + 1}`);
+        input1.setAttribute("id", `${i}`);
+        label1.setAttribute("for", `${i}`);
+        input2.setAttribute("id", `${i + 1}`);
+        label2.setAttribute("for", `${i + 1}`);
 
         btns.classList.add("btns");
-        addbtn.classList.add("green");
-        cancelbtn.classList.add("red");
+        addbtn.classList.add("add-button-styling");
+        cancelbtn.classList.add("cancel-button-styling");
         cont1.classList.add("container");
         cont2.classList.add("container");
+        input1.classList.add("input-styling");
+        input2.classList.add("input-styling");
 
         space.append(cont1, cont2, btns);
         cont1.append(label1, input1);
@@ -98,20 +112,20 @@ export default function openInbox() {
             const date = document.createElement("input");
             const container = document.createElement("div");
 
-            description.classList.add("small");
+            description.classList.add("description");
             date.classList.add("date");
             container.classList.add("container");
             radio.classList.add("radio");
-            task.classList.add("black");
+            task.classList.add("task");
 
             radio.setAttribute("type", "radio");
             date.setAttribute("type", "date");
-            description.setAttribute("for", `${iterator}`);
-            radio.setAttribute("id", `${iterator}`);
-            radio.setAttribute("name", `${iterator}`);
-            task.setAttribute("for", `${iterator}`);
-            container.setAttribute("id", `${iterator}`);
-            date.setAttribute("id", `${iterator}`);
+            description.setAttribute("for", `${i}`);
+            radio.setAttribute("id", `${i}`);
+            radio.setAttribute("name", `${i}`);
+            task.setAttribute("for", `${i}`);
+            container.setAttribute("id", `${i}`);
+            date.setAttribute("id", `${i}`);
 
             space.append(container);
             container.append(radio, task, description, date);
@@ -125,11 +139,12 @@ export default function openInbox() {
             }
 
             returnDOM();
-            iterator++;
+            i++;
         }))
 
         cancelbtn.onclick = returnDOM;
     }
 
     addTask.onclick = addForm;
+
 };
