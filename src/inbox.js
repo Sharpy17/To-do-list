@@ -1,30 +1,6 @@
+import { iForInbox, alphabet } from ".";
+
 export default function openInbox() {
-
-    let i = 0;
-
-    const doYouExist = document.querySelector(".inboxbtn");
-    console.log(doYouExist);
-
-    if (doYouExist !== null) {
-        const space = doYouExist;
-        space.style.display = flex;
-        const title = document.querySelector(".title");
-        const addTask = document.querySelector("add-task");
-    } else {
-        const body = document.querySelector("body");
-        const space = document.createElement("div");
-        const title = document.createElement("h1");
-        const addTask  = document.createElement("button");
-
-        body.append(space);
-        addTask.classList.add("add-task");
-        space.classList.add("inboxbtn");
-        title.classList.add("title");
-        space.append(title, addTask);
-
-        title.textContent = "Anything";
-        addTask.textContent = "Add Task +";
-    };
 
     function hideDOM() {
         const containers = document.getElementsByClassName("container");
@@ -50,10 +26,10 @@ export default function openInbox() {
         const addbtn = document.createElement("button");
         const cancelbtn = document.createElement("button");
 
-        input1.setAttribute("id", `${i}`);
-        label1.setAttribute("for", `${i}`);
-        input2.setAttribute("id", `${i + 1}`);
-        label2.setAttribute("for", `${i + 1}`);
+        input1.setAttribute("id", `${alphabet[iForInbox]}`);
+        label1.setAttribute("for", `${alphabet[iForInbox]}`);
+        input2.setAttribute("id", `${alphabet[iForInbox + 1]}`);
+        label2.setAttribute("for", `${alphabet[iForInbox + 1]}`);
 
         btns.classList.add("btns");
         addbtn.classList.add("add-button-styling");
@@ -114,18 +90,19 @@ export default function openInbox() {
 
             description.classList.add("description");
             date.classList.add("date");
+            container.classList.add(`${alphabet[iForInbox]}`);
             container.classList.add("container");
             radio.classList.add("radio");
             task.classList.add("task");
 
             radio.setAttribute("type", "radio");
             date.setAttribute("type", "date");
-            description.setAttribute("for", `${i}`);
-            radio.setAttribute("id", `${i}`);
-            radio.setAttribute("name", `${i}`);
-            task.setAttribute("for", `${i}`);
-            container.setAttribute("id", `${i}`);
-            date.setAttribute("id", `${i}`);
+            description.setAttribute("for", `${alphabet[iForInbox]}`);
+            radio.setAttribute("id", `${alphabet[iForInbox]}`);
+            radio.setAttribute("name", `${alphabet[iForInbox]}`);
+            task.setAttribute("for", `${alphabet[iForInbox]}`);
+            container.setAttribute("id", `${alphabet[iForInbox]}`);
+            date.setAttribute("id", `${alphabet[iForInbox]}`);
 
             space.append(container);
             container.append(radio, task, description, date);
@@ -139,12 +116,36 @@ export default function openInbox() {
             }
 
             returnDOM();
-            i++;
+            alphabet[iForInbox]++;
         }))
 
         cancelbtn.onclick = returnDOM;
     }
 
-    addTask.onclick = addForm;
+    const doYouExist = document.getElementById("0");
 
+    if (doYouExist !== null) {
+        addTask.onclick = addForm;
+    } else {
+        const bodyLocal = document.querySelector("body");
+        window.body = bodyLocal;
+        const spaceLocal = document.createElement("div");
+        window.space = spaceLocal;
+        const titleLocal = document.createElement("h1");
+        window.title = titleLocal;
+        const addTaskLocal = document.createElement("button");
+        window.addTask = addTaskLocal; 
+
+        bodyLocal.append(space);
+        addTaskLocal.classList.add("add-task");
+        spaceLocal.classList.add("space");
+        titleLocal.classList.add("title");
+        spaceLocal.append(title, addTask);
+
+        spaceLocal.setAttribute("id", "0");
+
+        titleLocal.textContent = "Inbox";
+        addTaskLocal.textContent = "Add Task +";
+        addTaskLocal.onclick = addForm;
+    };
 };

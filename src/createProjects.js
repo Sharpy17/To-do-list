@@ -1,4 +1,4 @@
-import { i } from ".";
+import selectProjects from "./projects";
 
 export default function addProject() {
 
@@ -22,10 +22,10 @@ export default function addProject() {
     addbtn.addEventListener("click", (() => {
         const projectToAppear = document.createElement("button");
         projectToAppear.classList.add("project-to-appear");
-        projectToAppear.setAttribute("id", `${i}`);
         projectToAppear.textContent = input.value;
         projectsDIV.append(projectToAppear);
         btnsHolder.remove();
         input.remove();
+        selectProjects();
     }))
 }

@@ -1,35 +1,33 @@
-import { i } from ".";
-import openInbox from "./inbox";
+import { iForProjects } from ".";
+import { hideDOMForNatives } from ".";
 
 export default function selectProjects() {
-
     const allProjects = document.getElementsByClassName("project-to-appear");
     const allProjectsArr = Array.from(allProjects);
-    
-
-    body.append(space);
 
     allProjectsArr.forEach((index) => {
         index.addEventListener("click", (() => {
-            let doYouExist = document.getElementById(`${index.textContent}`);
+            const doYouExist = document.querySelector(`.${index.textContent}`);
             if (doYouExist === null) {
-                openInbox();
-                // const body = document.querySelector("body");
-                // const space = document.createElement("div");
-                // const title = document.createElement("h2");
+                const body = document.querySelector("body");
+                const space = document.createElement("div");
+                const title = document.createElement("h2");
 
-                // body.append(space);
-                // space.append(title);
+                body.append(space);
+                space.append(title);
+                space.classList.add("space");
 
-                // title.textContent = index.textContent;
+                title.textContent = index.textContent;
 
-                // space.setAttribute("id" `${index.textContent}`); 
-
-                
-
+                space.classList.add(`${index.textContent}`);
+                space.setAttribute("id", `${iForProjects}`);
+                hideDOMForNatives(iForProjects);
             } else {
-                openInbox();
+                const id = doYouExist.id;
+                doYouExist.style.display = "flex";
+                hideDOMForNatives(id);
             }
+            iForProjects++;
         }))
     })
 }

@@ -1,7 +1,9 @@
+import { currentDate } from ".";
+
 export default function openThisWeek() {
-    const body = document.querySelector("body");
-    const space = document.createElement("h1");
-    body.append(space);
+    
+    const space = document.getElementById("2");
+    
     space.textContent = "This Week";
-    space.classList.add("space");
+
 }
