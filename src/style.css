@@ -133,6 +133,14 @@ button:hover {
     gap: 50px;
 }
 
+.flex-start {
+    width: 1000px;       
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 50px;
+}
+
 .date {
     width: 130px;
 }

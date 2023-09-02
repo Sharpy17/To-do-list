@@ -1,5 +1,6 @@
 import { iForProjects } from ".";
-import { hideDOMForNatives } from ".";
+import { hideDOM } from ".";
+import openForm from "./addForm";
 
 export default function selectProjects() {
     const allProjects = document.getElementsByClassName("project-to-appear");
@@ -21,11 +22,12 @@ export default function selectProjects() {
 
                 space.classList.add(`${index.textContent}`);
                 space.setAttribute("id", `${iForProjects}`);
-                hideDOMForNatives(iForProjects);
+                openForm(iForProjects);
+                hideDOM(iForProjects);
             } else {
                 const id = doYouExist.id;
                 doYouExist.style.display = "flex";
-                hideDOMForNatives(id);
+                hideDOM(id);
             }
             iForProjects++;
         }))
