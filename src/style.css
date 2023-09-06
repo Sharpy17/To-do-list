@@ -71,6 +71,17 @@ button:hover {
     text-align: left;
 }
 
+.delete-to-appear {
+    color: #ff0000;
+    text-align: right;
+}
+
+.flex-to-appear {
+    display: flex;
+    justify-content: center;
+    gap: 45px;
+}
+
 .input-styling { 
     font-family: inherit;
     font-size: 17px;
@@ -80,7 +91,6 @@ button:hover {
     width: 250px;
     outline: none;
 }
-
 
 .header {
     grid-column: 1 / 3;

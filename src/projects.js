@@ -3,8 +3,11 @@ import { hideDOM } from ".";
 import openForm from "./addForm";
 
 export default function selectProjects() {
+    
     const allProjects = document.getElementsByClassName("project-to-appear");
+    const allDelete = document.getElementsByClassName("delete-to-appear");
     const allProjectsArr = Array.from(allProjects);
+    const allDeleteArr = Array.from(allDelete);
 
     allProjectsArr.forEach((index) => {
         index.addEventListener("click", (() => {
@@ -31,5 +34,12 @@ export default function selectProjects() {
             }
             iForProjects++;
         }))
+    })
+
+    allDeleteArr.forEach(index => {
+        index.addEventListener("click", () => {
+            const cont = document.getElementById(`yomama${index.id}`);
+            cont.remove();
+        })
     })
 }

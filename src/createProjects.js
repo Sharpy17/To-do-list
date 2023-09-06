@@ -1,6 +1,12 @@
 import selectProjects from "./projects";
 
+let iSwearItsTheLastIterator = 80000;
+
 export default function addProject() {
+
+    let deleteButton;
+    let cont;
+    let projectToAppear;
 
     const projectsDIV = document.querySelector(".projects");
         
@@ -20,12 +26,29 @@ export default function addProject() {
     cancelbtn.textContent = "Cancel";
 
     addbtn.addEventListener("click", (() => {
-        const projectToAppear = document.createElement("button");
+        
+        cont = document.createElement("div");
+
+        projectToAppear = document.createElement("button");
+        deleteButton = document.createElement("button");
+
+        cont.classList.add("flex-to-appear");
         projectToAppear.classList.add("project-to-appear");
+        deleteButton.classList.add("delete-to-appear");
+
+        cont.setAttribute("id", `yomama${iSwearItsTheLastIterator}`);
+        deleteButton.setAttribute("id", `${iSwearItsTheLastIterator}`);
+        
+        projectsDIV.append(cont);
+        cont.append(projectToAppear, deleteButton);
+
         projectToAppear.textContent = input.value;
-        projectsDIV.append(projectToAppear);
+        deleteButton.textContent = "x";
+       
         btnsHolder.remove();
         input.remove();
         selectProjects();
+
+        iSwearItsTheLastIterator++;
     }))
 }
